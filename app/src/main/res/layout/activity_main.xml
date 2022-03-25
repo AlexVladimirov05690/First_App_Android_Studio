@@ -5,14 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:id="@+id/Button_Space"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/Top_Menu"
+        app:layout_constraintBottom_toTopOf="@id/Bottom_Menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:background="#FF5722"/>
+    <FrameLayout
+        android:id="@+id/Top_Menu"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#4CAF50"/>
+    <FrameLayout
+        android:id="@+id/Bottom_Menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#C6B626"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
