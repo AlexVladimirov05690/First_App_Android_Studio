@@ -12,19 +12,19 @@
         app:layout_constraintBottom_toTopOf="@id/Bottom_Menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        android:background="#FF5722"/>
+        android:layout_width="@dimen/Button_space_width"
+        android:layout_height="@dimen/Button_space_height"
+        android:background="@color/color_Button_Space"/>
     <FrameLayout
         android:id="@+id/Top_Menu"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#4CAF50"/>
+        android:layout_height="@dimen/Menu_height"
+        android:background="@color/color_Top_Menu"/>
     <FrameLayout
         android:id="@+id/Bottom_Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#C6B626"/>
+        android:layout_height="@dimen/Menu_height"
+        android:background="@color/color_Bottom_Menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
