@@ -7,5 +7,7 @@
     <string name="setting">Настройки</string>
     <string name="content_description">Постер</string>
     <string name="content_description_back">Фон</string>
+    <string name="link">Постеры взяты с сайта: https://www.movieposters.com/</string>
+
 
 </resources>

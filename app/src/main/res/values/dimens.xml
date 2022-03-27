@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="Button_space_width">300dp</dimen>
-    <dimen name="Button_space_height">500dp</dimen>
-    <dimen name="Top_Menu_Height">100dp</dimen>
-    <dimen name="Button_Menu_Height">100dp</dimen>
-    <dimen name="Width_posters">70dp</dimen>
+    <dimen name="button_space_width">300dp</dimen>
+    <dimen name="button_space_height">500dp</dimen>
+    <dimen name="top_Menu_Height">100dp</dimen>
+    <dimen name="button_Menu_Height">100dp</dimen>
+    <dimen name="width_posters">70dp</dimen>
+    <dimen name="card_corner">15dp</dimen>
+    <dimen name="card_lev">15dp</dimen>
 
 </resources>
