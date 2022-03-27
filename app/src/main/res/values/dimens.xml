@@ -2,5 +2,8 @@
 <resources>
     <dimen name="Button_space_width">300dp</dimen>
     <dimen name="Button_space_height">500dp</dimen>
-    <dimen name="Menu_height">70dp</dimen>
+    <dimen name="Top_Menu_Height">100dp</dimen>
+    <dimen name="Button_Menu_Height">100dp</dimen>
+    <dimen name="Width_posters">70dp</dimen>
+
 </resources>

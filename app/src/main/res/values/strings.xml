@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FindFilms</string>
+    <string name="find_film">Найти фильм</string>
+    <string name="recommendations">Рекомендации</string>
+    <string name="favorites">Избранное</string>
+    <string name="wishlist">В список желаний</string>
+    <string name="setting">Настройки</string>
+
 </resources>

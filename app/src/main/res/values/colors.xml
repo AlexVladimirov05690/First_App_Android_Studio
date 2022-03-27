@@ -10,4 +10,7 @@
     <color name="color_Button_Space">#FF5722</color>
     <color name="color_Top_Menu">#4CAF50</color>
     <color name="color_Bottom_Menu">#C6B626</color>
+    <color name="dark_gold">#B8860B</color>
+    <color name="gold">#FFD700 </color>
+
 </resources>
