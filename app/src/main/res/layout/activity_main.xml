@@ -9,7 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/film_reel" />
+        android:src="@drawable/background"
+        android:contentDescription="@string/content_description"/>
 
     <LinearLayout
         android:id="@+id/Button_Space"
@@ -20,7 +21,7 @@
         app:layout_constraintBottom_toTopOf="@id/Bottom_Menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Top_Menu">
+        app:layout_constraintTop_toBottomOf="@+id/Top_Scroll">
 
         <Button
             android:id="@+id/find_film"
@@ -59,64 +60,110 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/Top_Menu"
+    <HorizontalScrollView
+        android:id="@+id/Top_Scroll"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/Top_Menu_Height"
-        android:background="@drawable/button_background"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ford_v_ferrari"
-            android:layout_width="@dimen/Width_posters"
+        <LinearLayout
+            android:id="@+id/Top_Menu"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ford_v_ferrari" />
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/the_gentlemen"
-            android:layout_width="@dimen/Width_posters"
-            android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/the_gentlemen" />
+            <ImageView
+                android:id="@+id/ford_v_ferrari"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ford_v_ferrari"
+                android:contentDescription="@string/content_description"/>
 
-
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="@dimen/Width_posters"
-            android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/avatar" />
-
-        <ImageView
-            android:id="@+id/bad_good"
-            android:layout_width="@dimen/Width_posters"
-            android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bad_good" />
+            <ImageView
+                android:id="@+id/the_gentlemen"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/the_gentlemen"
+                android:contentDescription="@string/content_description"/>
 
 
-        <ImageView
-            android:id="@+id/the_gentlemen_fortune"
-            android:layout_width="@dimen/Width_posters"
-            android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/the_gentlemen_fortune" />
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar"
+                android:contentDescription="@string/content_description"/>
 
-        <ImageView
-            android:id="@+id/king_lion"
-            android:layout_width="@dimen/Width_posters"
-            android:layout_height="@dimen/Top_Menu_Height"
-            android:scaleType="centerCrop"
-            android:src="@drawable/king_lion" />
-    </LinearLayout>
+
+            <ImageView
+                android:id="@+id/bad_good"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bad_good"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/the_gentlemen_fortune"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/the_gentlemen_fortune"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/king_lion"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/king_lion"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/godfather"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/godfather"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/jaws"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/jaws"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/terminator"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/terminator"
+                android:contentDescription="@string/content_description"/>
+
+            <ImageView
+                android:id="@+id/castway"
+                android:layout_width="@dimen/Width_posters"
+                android:layout_height="@dimen/Top_Menu_Height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/castaway"
+                android:contentDescription="@string/content_description"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <FrameLayout
         android:id="@+id/Bottom_Menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Button_Menu_Height"
-        android:background="@color/color_Bottom_Menu"
+        android:background="@drawable/button_background"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
