@@ -14,12 +14,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="@dimen/link_height"
         android:autoLink="web"
-        android:background="#70FFFFFF"
+        android:background="@color/color_background_link"
         android:text="@string/link"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu">
+        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu"
+        tools:ignore="TouchTargetSizeCheck">
 
     </TextView>
 
@@ -80,7 +81,7 @@
         <LinearLayout
             android:id="@+id/Top_Menu"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/top_Menu_Height"
+            android:layout_height="@dimen/top_menu_height"
             android:background="@drawable/button_background"
             android:gravity="center"
             android:orientation="horizontal">
@@ -88,7 +89,7 @@
             <ImageView
                 android:id="@+id/ford_v_ferrari"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ford_v_ferrari" />
@@ -96,7 +97,7 @@
             <ImageView
                 android:id="@+id/the_gentlemen"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/the_gentlemen" />
@@ -105,7 +106,7 @@
             <ImageView
                 android:id="@+id/avatar"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/avatar" />
@@ -114,7 +115,7 @@
             <ImageView
                 android:id="@+id/bad_good"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/bad_good" />
@@ -122,7 +123,7 @@
             <ImageView
                 android:id="@+id/the_gentlemen_fortune"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/the_gentlemen_fortune" />
@@ -130,7 +131,7 @@
             <ImageView
                 android:id="@+id/king_lion"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/king_lion" />
@@ -138,7 +139,7 @@
             <ImageView
                 android:id="@+id/godfather"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/godfather" />
@@ -146,7 +147,7 @@
             <ImageView
                 android:id="@+id/jaws"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/jaws" />
@@ -154,7 +155,7 @@
             <ImageView
                 android:id="@+id/terminator"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/terminator" />
@@ -162,7 +163,7 @@
             <ImageView
                 android:id="@+id/castway"
                 android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_Menu_Height"
+                android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/castaway" />
@@ -181,7 +182,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_Menu_Height"
+            android:layout_height="@dimen/button_menu_height"
             android:background="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.cardview.widget.CardView>
