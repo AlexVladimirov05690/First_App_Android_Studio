@@ -41,21 +41,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        find_film.setOnClickListener {
-            Toast.makeText(this, "Найти фильм", Toast.LENGTH_SHORT).show()
-        }
-        favorites.setOnClickListener {
-            Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
-        }
-        recommendations.setOnClickListener {
-            Toast.makeText(this, "Рекомендации", Toast.LENGTH_SHORT).show()
-        }
-        wishlist.setOnClickListener {
-            Toast.makeText(this, "В список желаний", Toast.LENGTH_SHORT).show()
-        }
-        setting.setOnClickListener {
-            Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
-        }
     }
 }

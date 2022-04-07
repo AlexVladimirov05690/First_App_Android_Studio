@@ -10,6 +10,7 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -47,58 +48,9 @@
         android:background="@color/color_background_link"
         android:text="@string/link"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu"
-        tools:ignore="TouchTargetSizeCheck">
+        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu">
 
     </TextView>
-
-    <LinearLayout
-        android:id="@+id/Button_Space"
-        android:layout_width="@dimen/button_space_width"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/Bottom_Menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Top_Scroll">
-
-        <Button
-            android:id="@+id/find_film"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/find_film" />
-
-        <Button
-            android:id="@+id/favorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/favorites" />
-
-        <Button
-            android:id="@+id/recommendations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/recommendations" />
-
-        <Button
-            android:id="@+id/wishlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/wishlist" />
-
-        <Button
-            android:id="@+id/setting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/setting" />
-
-    </LinearLayout>
 
     <HorizontalScrollView
         android:id="@+id/Top_Scroll"
