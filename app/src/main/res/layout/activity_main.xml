@@ -17,10 +17,10 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/top_bar_name"
-            app:titleTextColor="@color/white"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_menu"/>
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="@string/top_bar_name"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,11 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/button_background"
-        app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_menu"/>
+        app:menu="@menu/bottom_menu" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -42,6 +42,7 @@
         android:src="@drawable/background" />
 
     <TextView
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/link_height"
         android:autoLink="web"
@@ -51,6 +52,77 @@
         app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu">
 
     </TextView>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_layout_margin"
+        android:columnCount="2"
+        android:layoutAnimation="@anim/anim_layout"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true"
+        app:layout_constraintTop_toBottomOf="@+id/Top_Scroll"
+        app:layout_constraintBottom_toTopOf="@+id/text_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/left_app"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/kill_bill"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_app"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/knives_out"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/left_bottom"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mad_max"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_bottom"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/the_matrix"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
 
     <HorizontalScrollView
         android:id="@+id/Top_Scroll"
@@ -151,7 +223,6 @@
         </LinearLayout>
 
     </HorizontalScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
