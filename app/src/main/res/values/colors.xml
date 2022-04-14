@@ -13,4 +13,6 @@
     <color name="dark_gold">#B8860B</color>
     <color name="gold">#FFD700 </color>
     <color name="color_background_link">#70FFFFFF</color>
+    <color name="color_background_center_posters">#10FFFFFF</color>
+
 </resources>
