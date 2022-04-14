@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="@string/top_bar_name"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Bottom_Menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,70 +42,111 @@
         android:src="@drawable/background" />
 
     <TextView
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/link_height"
         android:autoLink="web"
         android:background="@color/color_background_link"
         android:text="@string/link"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu"
-        tools:ignore="TouchTargetSizeCheck">
+        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu">
 
     </TextView>
 
-    <LinearLayout
-        android:id="@+id/Button_Space"
-        android:layout_width="@dimen/button_space_width"
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/Bottom_Menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/grid_layout_margin"
+        android:columnCount="2"
+        android:layoutAnimation="@anim/anim_layout"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toTopOf="@+id/text_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Top_Scroll">
 
-        <Button
-            android:id="@+id/find_film"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/find_film" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/left_app"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:stateListAnimator="@animator/anim_press"
+            app:cardCornerRadius="@dimen/poster_center_radius">
 
-        <Button
-            android:id="@+id/favorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/favorites" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kill_bill" />
 
-        <Button
-            android:id="@+id/recommendations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/recommendations" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/wishlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/wishlist" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_app"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:stateListAnimator="@animator/anim_press"
+            app:cardCornerRadius="@dimen/poster_center_radius">
 
-        <Button
-            android:id="@+id/setting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/setting" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/knives_out" />
 
-    </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/left_bottom"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius"
+            android:clickable="true"
+            android:focusable="true"
+            android:stateListAnimator="@animator/anim_press">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mad_max" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_bottom"
+            android:layout_width="@dimen/poster_center_width"
+            android:layout_height="@dimen/poster_center_height"
+            app:cardCornerRadius="@dimen/poster_center_radius"
+            android:clickable="true"
+            android:focusable="true"
+            android:stateListAnimator="@animator/anim_press">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/the_matrix" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
 
     <HorizontalScrollView
         android:id="@+id/Top_Scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layoutAnimation="@anim/anim_layout"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout">
 
         <LinearLayout
             android:id="@+id/Top_Menu"
@@ -161,7 +231,7 @@
                 android:src="@drawable/terminator" />
 
             <ImageView
-                android:id="@+id/castway"
+                android:id="@+id/cast_way"
                 android:layout_width="@dimen/width_posters"
                 android:layout_height="@dimen/top_menu_height"
                 android:contentDescription="@string/content_description"
@@ -171,21 +241,6 @@
         </LinearLayout>
 
     </HorizontalScrollView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/Bottom_Menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/card_corner"
-        app:cardElevation="@dimen/card_lev"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/button_menu_height"
-            android:background="@drawable/button_background"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
