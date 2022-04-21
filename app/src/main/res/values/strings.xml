@@ -9,6 +9,7 @@
     <string name="content_description_back">Фон</string>
     <string name="link">Постеры взяты с сайта: https://www.movieposters.com/</string>
     <string name="top_bar_name">Найти кино</string>
+    <string name="desc_posters">Постер в центре</string>
 
 
 </resources>
