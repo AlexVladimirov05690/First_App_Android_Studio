@@ -14,5 +14,8 @@
     <color name="gold">#FFD700 </color>
     <color name="color_background_link">#70FFFFFF</color>
     <color name="color_background_center_posters">#10FFFFFF</color>
+    <color name="button_share">#0000FF</color>
+    <color name="color_details_poster">#AA00FF</color>
+
 
 </resources>
