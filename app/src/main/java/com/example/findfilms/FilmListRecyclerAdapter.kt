@@ -2,7 +2,7 @@ package com.example.findfilms
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.film_item.view.*
 
@@ -28,10 +28,13 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): R
         }
     }
 
-    fun addItems(list: List<Film>) {
-        items.clear()
-        items.addAll(list)
-        notifyDataSetChanged()
+
+    fun addItems(adapter: FilmListRecyclerAdapter, newList: List<Film>) {
+        val oldList = adapter.items
+        val filmDiff = FilmDiff(oldList, newList)
+        val diffResult =DiffUtil.calculateDiff(filmDiff)
+        items.addAll(newList)
+        diffResult.dispatchUpdatesTo(adapter)
     }
 
     interface OnItemClickListener {
