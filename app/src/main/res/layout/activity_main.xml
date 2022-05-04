@@ -10,8 +10,9 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@drawable/app_background"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -28,7 +29,7 @@
         android:id="@+id/Bottom_Menu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/app_background"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:labelVisibilityMode="labeled"
@@ -53,93 +54,18 @@
 
     </TextView>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/grid_layout_margin"
-        android:columnCount="2"
-        android:layoutAnimation="@anim/anim_layout"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true"
-        app:layout_constraintBottom_toTopOf="@+id/text_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Bottom_Menu"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Top_Scroll">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/left_app"
-            android:layout_width="@dimen/poster_center_width"
-            android:layout_height="@dimen/poster_center_height"
-            android:clickable="true"
-            android:focusable="true"
-            android:stateListAnimator="@animator/anim_press"
-            app:cardCornerRadius="@dimen/poster_center_radius">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/kill_bill" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/right_app"
-            android:layout_width="@dimen/poster_center_width"
-            android:layout_height="@dimen/poster_center_height"
-            android:clickable="true"
-            android:focusable="true"
-            android:stateListAnimator="@animator/anim_press"
-            app:cardCornerRadius="@dimen/poster_center_radius">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/knives_out" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/left_bottom"
-            android:layout_width="@dimen/poster_center_width"
-            android:layout_height="@dimen/poster_center_height"
-            app:cardCornerRadius="@dimen/poster_center_radius"
-            android:clickable="true"
-            android:focusable="true"
-            android:stateListAnimator="@animator/anim_press">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/mad_max" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/right_bottom"
-            android:layout_width="@dimen/poster_center_width"
-            android:layout_height="@dimen/poster_center_height"
-            app:cardCornerRadius="@dimen/poster_center_radius"
-            android:clickable="true"
-            android:focusable="true"
-            android:stateListAnimator="@animator/anim_press">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/the_matrix" />
-
-        </androidx.cardview.widget.CardView>
-
-
-    </GridLayout>
+        app:layout_constraintTop_toBottomOf="@+id/Top_Scroll"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/film_item" />
 
     <HorizontalScrollView
         android:id="@+id/Top_Scroll"
@@ -152,7 +78,7 @@
             android:id="@+id/Top_Menu"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/top_menu_height"
-            android:background="@drawable/button_background"
+            android:background="@drawable/app_background"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -171,15 +97,6 @@
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/the_gentlemen" />
-
-
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="@dimen/width_posters"
-                android:layout_height="@dimen/top_menu_height"
-                android:contentDescription="@string/content_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/avatar" />
 
 
             <ImageView
