@@ -2,6 +2,7 @@ package com.example.findfilms
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,6 +16,22 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_place, HomeFragment())
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        if(supportFragmentManager.backStackEntryCount == 1) {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.do_you_want_exit)
+                .setIcon(R.drawable.ic_launcher_foreground)
+                .setPositiveButton(R.string.yes) {_,_ ->
+                    finish()
+                }
+                .setNegativeButton(R.string.no) {_,_ ->
+                }
+                .show()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun initButton() {
