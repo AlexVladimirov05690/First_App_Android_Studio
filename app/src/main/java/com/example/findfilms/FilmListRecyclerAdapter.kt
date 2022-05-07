@@ -32,7 +32,7 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): R
     fun addItems(adapter: FilmListRecyclerAdapter, newList: List<Film>) {
         val oldList = adapter.items
         val filmDiff = FilmDiff(oldList, newList)
-        val diffResult =DiffUtil.calculateDiff(filmDiff)
+        val diffResult = DiffUtil.calculateDiff(filmDiff)
         items.addAll(newList)
         diffResult.dispatchUpdatesTo(adapter)
     }
