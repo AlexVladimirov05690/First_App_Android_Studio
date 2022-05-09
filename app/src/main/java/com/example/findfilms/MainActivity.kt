@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButton() {
 
-        topAppBar.setOnMenuItemClickListener() {
+        topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.set -> {
                     Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
@@ -46,18 +46,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        Bottom_Menu.setOnItemSelectedListener() {
+        Bottom_Menu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.fav -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_place, FavoritesFragment())
+                        .addToBackStack(null)
+                        .commit()
                     true
                 }
-                R.id.rec -> {
-                    Toast.makeText(this, "Рекомендации", Toast.LENGTH_SHORT).show()
+                R.id.watch_later_menu -> {
+                    Toast.makeText(this, "Смотреть позже", Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.in_wishlist -> {
-                    Toast.makeText(this, "В список желаемого", Toast.LENGTH_SHORT).show()
+                R.id.selections -> {
+                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false

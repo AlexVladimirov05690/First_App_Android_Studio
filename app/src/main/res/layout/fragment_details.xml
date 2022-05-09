@@ -79,7 +79,6 @@
         android:backgroundTint="@color/button_share"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|left"
-        app:srcCompat="@drawable/ic_add_to_wish_list"
         android:contentDescription="@string/float_button_desc"
         android:tint="@android:color/white"/>
 

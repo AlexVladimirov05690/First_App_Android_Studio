@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#AA00FF</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_button_space">#FF5722</color>
-    <color name="color_top_menu">#4CAF50</color>
-    <color name="color_bottom_menu">#C6B626</color>
-    <color name="dark_gold">#B8860B</color>
-    <color name="gold">#FFD700 </color>
-    <color name="color_background_link">#70FFFFFF</color>
-    <color name="color_background_center_posters">#10FFFFFF</color>
     <color name="button_share">#0000FF</color>
-    <color name="color_details_poster">#AA00FF</color>
 
 
 </resources>

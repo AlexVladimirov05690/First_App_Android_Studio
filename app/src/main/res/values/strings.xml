@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">FindFilms</string>
-    <string name="find_film">Найти фильм</string>
-    <string name="recommendations">Рекомендации</string>
+    <string name="watch_later_menu">Смотреть позже</string>
     <string name="favorites">Избранное</string>
-    <string name="wishlist">В список желаний</string>
+    <string name="selections">Подборки</string>
     <string name="setting">Настройки</string>
-    <string name="content_description">Постер</string>
-    <string name="content_description_back">Фон</string>
-    <string name="link">Постеры взяты с сайта: https://www.movieposters.com/</string>
     <string name="top_bar_name">Найти кино</string>
     <string name="desc_posters">Постер в центре</string>
     <string name="desc_titanic">В первом и последнем плавании шикарного «Титаника» встречаются двое. Пассажир нижней палубы Джек выиграл билет в карты, а богатая наследница Роза отправляется в Америку, чтобы выйти замуж по расчёту. Чувства молодых людей только успевают расцвести, и даже не классовые различия создадут испытания влюблённым, а айсберг, вставший на пути считавшегося непотопляемым лайнера.</string>
@@ -36,7 +32,6 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="float_button_desc">Кнопка</string>
-
 
 
 </resources>
