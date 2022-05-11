@@ -32,6 +32,11 @@
     <string name="short_desc_the_matrix">Культовый фантастический боевик, в котором Киану Ривз противостоит разумной виртуальной вселенной.</string>
     <string name="short_desc_django_unchained">Метко шутя и стреляя, охотники за головами уничтожают негодяев. Квентин Тарантино пробует силы в вестерне.</string>
     <string name="short_desc_hacksaw_ridge">Сознательный уклонист проходит через все тяготы фронта. Драма Мела Гибсона о военном медике Десмонде Доссе</string>
+    <string name="do_you_want_exit">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="float_button_desc">Кнопка</string>
+
 
 
 </resources>
