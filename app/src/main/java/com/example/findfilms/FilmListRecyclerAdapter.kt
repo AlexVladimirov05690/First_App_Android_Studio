@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.film_item.view.*
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val items = mutableListOf<Film>()
+    private var items = mutableListOf<Film>()
 
     override fun getItemCount() = items.size
 
@@ -29,13 +29,12 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): R
     }
 
 
-    fun addItems(adapter: FilmListRecyclerAdapter, newList: List<Film>) {
-        val oldList = adapter.items
-        val filmDiff = FilmDiff(oldList, newList)
-        val diffResult = DiffUtil.calculateDiff(filmDiff)
-        items.addAll(newList)
-        diffResult.dispatchUpdatesTo(adapter)
+    fun addItems(list: List<Film>) {
+        items.clear()
+        items.addAll(list)
+        notifyDataSetChanged()
     }
+
 
     interface OnItemClickListener {
         fun click(film: Film)

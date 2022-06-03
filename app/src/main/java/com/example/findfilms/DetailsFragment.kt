@@ -1,6 +1,7 @@
 package com.example.findfilms
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
+    private lateinit var film: Film
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,11 +21,15 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val film = arguments?.get("film") as Film
+        film = arguments?.get("film") as Film
         details_toolbar.title = film.title
         details_poster.setImageResource(film.poster)
         details_description.setText(film.description)
         initButtons()
+        details_in_wish.setImageResource(
+            if (film.isInFavorites) R.drawable.ic_baseline_favorite_24
+            else R.drawable.ic_baseline_favorite_border_24
+        )
     }
 
     private fun initButtons() {
@@ -31,10 +37,25 @@ class DetailsFragment : Fragment() {
             Snackbar.make(main_activity, "Смотреть позже", Snackbar.LENGTH_SHORT).show()
         }
         details_in_wish.setOnClickListener {
-            Snackbar.make(main_activity, "В избранное", Snackbar.LENGTH_SHORT).show()
+            if(!film.isInFavorites) {
+                details_in_wish.setImageResource(R.drawable.ic_baseline_favorite_24)
+                film.isInFavorites = true
+                Snackbar.make(main_activity, "Фильм добавлен в Избранное", Snackbar.LENGTH_SHORT).show()
+            } else {
+                details_in_wish.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                film.isInFavorites = false
+                Snackbar.make(main_activity, "Фильм удалён из Избранного", Snackbar.LENGTH_SHORT).show()
+            }
         }
         details_fab.setOnClickListener {
-            Snackbar.make(main_activity, "Поделиться", Snackbar.LENGTH_SHORT).show()
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Check out this film: ${film.title} \n\n ${film.description}"
+            )
+            intent.type = "text/plain"
+            startActivity(Intent.createChooser(intent, "Share To:"))
         }
     }
 

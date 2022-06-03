@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 class HomeFragment : Fragment() {
+
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private val filmsDataBase = listOf(
         Film(1, "Достать ножи", R.drawable.knives_out, R.string.desc_knives_out, R.string.short_desc_knives_out),
@@ -35,7 +38,33 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initAdapter()
-        filmsAdapter.addItems(filmsAdapter, filmsDataBase)
+        filmsAdapter.addItems(filmsDataBase)
+        searchInit()
+    }
+
+    private fun searchInit() {
+        search_view.setOnClickListener {
+            search_view.isIconified = false
+        }
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+            override fun onQueryTextChange(p0: String): Boolean {
+                if(p0.isEmpty()) {
+                    filmsAdapter.addItems(filmsDataBase)
+                    return true
+                }
+                val result = filmsDataBase.filter {
+                    it.title.lowercase(Locale.getDefault()).contains(p0.lowercase(Locale.getDefault()))
+                }
+
+                filmsAdapter.addItems(result)
+                return true
+            }
+
+        })
     }
 
 
@@ -50,6 +79,7 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             val decorator = TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
+
         }
     }
 }
