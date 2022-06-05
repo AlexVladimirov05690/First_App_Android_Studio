@@ -1,12 +1,6 @@
 package com.example.findfilms
 
-import android.icu.lang.UCharacter.IndicPositionalCategory.TOP
 import android.os.Bundle
-import android.transition.Scene
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.transition.TransitionSet
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.merge_home_screen_content.*
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -42,17 +35,8 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val scene = Scene.getSceneForLayout(home_fragment_root, R.layout.merge_home_screen_content, requireContext())
-        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
-        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget((R.id.main_recycler))
-        val customTransition = TransitionSet().apply {
-            duration = 500
-            addTransition(searchSlide)
-            addTransition(recyclerSlide)
-        }
-        TransitionManager.go(scene, customTransition)
         super.onViewCreated(view, savedInstanceState)
-
+        AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
         initAdapter()
         filmsAdapter.addItems(filmsDataBase)
         searchInit()
