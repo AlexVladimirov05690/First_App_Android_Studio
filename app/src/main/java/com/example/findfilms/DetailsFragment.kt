@@ -34,17 +34,17 @@ class DetailsFragment : Fragment() {
 
     private fun initButtons() {
         watch_later.setOnClickListener {
-            Snackbar.make(main_activity, "Смотреть позже", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(details, "Смотреть позже", Snackbar.LENGTH_SHORT).show()
         }
         details_in_wish.setOnClickListener {
             if(!film.isInFavorites) {
                 details_in_wish.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
-                Snackbar.make(main_activity, "Фильм добавлен в Избранное", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(details, "Фильм добавлен в Избранное", Snackbar.LENGTH_SHORT).show()
             } else {
                 details_in_wish.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
-                Snackbar.make(main_activity, "Фильм удалён из Избранного", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(details, "Фильм удалён из Избранного", Snackbar.LENGTH_SHORT).show()
             }
         }
         details_fab.setOnClickListener {

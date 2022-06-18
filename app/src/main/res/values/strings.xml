@@ -32,6 +32,7 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="float_button_desc">Кнопка</string>
+    <string name="main">Главная</string>
 
 
 </resources>

@@ -8,18 +8,24 @@
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/background_search_view.xml" value="0.107" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/bb.xml" value="0.1525" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/button_background.xml" value="0.145" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/favorite_background.xml" value="0.1035" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_baseline_favorite.xml" value="0.207" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_recommendations.xml" value="0.207" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_round_menu.xml" value="0.207" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_settings.xml" value="0.207" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/ic_twotone_favorite.xml" value="0.207" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/selections_background.xml" value="0.1035" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/drawable/wanch_later_background.xml" value="0.1035" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/activity_details.xml" value="0.20625" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/film_item.xml" value="0.259375" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/fragment_details.xml" value="0.264" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/fragment_favorites.xml" value="0.259375" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/fragment_home.xml" value="0.20555555555555555" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/fragment_selections.xml" value="0.20625" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/fragment_watch_later.xml" value="0.20625" />
+        <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/layout/merge_home_screen_content.xml" value="0.16979166666666667" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/menu/bottom_menu.xml" value="0.2046875" />
         <entry key="..\:/SkillFactory/Android Studio/First_App_Android_Studio/app/src/main/res/menu/top_app_bar.xml" value="0.259375" />
       </map>
