@@ -1,4 +1,4 @@
-package com.example.findfilms
+package com.example.findfilms.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -10,5 +10,6 @@ data class Film(
     val poster: Int,
     val description: Int,
     val short_desc: Int,
+    var rating: Float = 0f,
     var isInFavorites: Boolean = false
 ) : Parcelable

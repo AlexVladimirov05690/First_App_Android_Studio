@@ -1,20 +1,26 @@
-package com.example.findfilms
+package com.example.findfilms.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.findfilms.*
+import com.example.findfilms.databinding.ActivityMainBinding
+import com.example.findfilms.domain.Film
+import com.example.findfilms.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         initButton()
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_place, HomeFragment())
+            .add(binding.fragmentPlace.id, HomeFragment())
             .addToBackStack(null)
             .commit()
     }
@@ -24,10 +30,10 @@ class MainActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle(R.string.do_you_want_exit)
                 .setIcon(R.drawable.ic_launcher_foreground)
-                .setPositiveButton(R.string.yes) {_,_ ->
+                .setPositiveButton(R.string.yes) { _, _ ->
                     finish()
                 }
-                .setNegativeButton(R.string.no) {_,_ ->
+                .setNegativeButton(R.string.no) { _, _ ->
                 }
                 .show()
         }
@@ -38,17 +44,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButton() {
 
-        topAppBar.setOnMenuItemClickListener {
+        binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.set -> {
-                    Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.setting, Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false
             }
         }
 
-        Bottom_Menu.setOnItemSelectedListener {
+        binding.BottomMenu.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.main -> {
                     val tag = "main"
@@ -87,18 +93,18 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_place, fragment)
+            .add(binding.fragmentPlace.id, fragment)
             .addToBackStack(null)
             .commit()
     }
+
 
     private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
 
     private fun changeFragment(fragment: Fragment, tag: String) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_place, fragment, tag)
-            .addToBackStack(null)
+            .replace(binding.fragmentPlace.id, fragment, tag)
             .commit()
     }
 }
