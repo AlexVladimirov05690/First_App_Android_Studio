@@ -1,14 +1,15 @@
 package com.example.findfilms
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.findfilms.databinding.FilmItemBinding
 import kotlinx.android.synthetic.main.film_item.view.*
 
-class FilmViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FilmViewHolder(var binding:FilmItemBinding) : RecyclerView.ViewHolder(binding.root) {
     private val title = itemView.title
     private val poster = itemView.poster
     private val description = itemView.description
+    private val ratingDonut = itemView.rating_donut
 
     fun bind(film: Film) {
         title.text = film.title
@@ -16,5 +17,6 @@ class FilmViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemV
             .load(film.poster)
             .into(poster)
         description.setText(film.short_desc)
+        ratingDonut.setProgress((film.rating * 10).toInt())
     }
 }

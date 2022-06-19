@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/favorites_fragment_root"
-    android:visibility="invisible"
-    tools:visibility="visible"
-    android:background="@drawable/favorite_background"
-    tools:context=".FavoritesFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favorites_recycler"
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/film_item" >
+        android:id="@+id/favorites_fragment_root"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:background="@drawable/favorite_background"
+        tools:context=".FavoritesFragment">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorites_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/film_item">
 
-</FrameLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </FrameLayout>
+</layout>

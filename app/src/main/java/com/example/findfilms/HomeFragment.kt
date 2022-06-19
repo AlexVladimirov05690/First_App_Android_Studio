@@ -7,56 +7,45 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
+import com.example.findfilms.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
-    private val filmsDataBase = listOf(
-        Film(1, "Достать ножи", R.drawable.knives_out, R.string.desc_knives_out, R.string.short_desc_knives_out),
-        Film(2, "Убить Билла", R.drawable.kill_bill, R.string.desc_kill_bill, R.string.short_desc_kill_bill),
-        Film(3, "Безумный Макс. Дорога ярости", R.drawable.mad_max, R.string.desc_mad_max, R.string.short_desc_mad_max),
-        Film(4, "Матрица", R.drawable.the_matrix, R.string.desc_the_matrix, R.string.short_desc_the_matrix),
-        Film(5, "Джанго освобожденный", R.drawable.django_unchained, R.string.desc_django_unchained, R.string.short_desc_django_unchained),
-        Film(6, "По соображениям совести", R.drawable.hacksaw_ridge, R.string.desc_hacksaw_ridge, R.string.short_desc_hacksaw_ridge),
-        Film(7, "Карты, Деньги, Два ствола", R.drawable.lock_stock_and_two_barrels, R.string.desc_lock_stock_and_two_barrels, R.string.short_desc_lock_stock_and_two_barrels),
-        Film(8, "Большой куш", R.drawable.snatch, R.string.desc_snatch, R.string.short_desc_snatch),
-        Film(9, "Отступники", R.drawable.the_departed, R.string.desc_departed, R.string.short_desc_departed),
-        Film(10, "Зелёная миля", R.drawable.the_green_mile, R.string.desc_green_mile, R.string.short_desc_green_mile),
-        Film(11, "Титаник", R.drawable.titanic, R.string.desc_titanic, R.string.short_desc_titanic)
-    )
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
         initAdapter()
-        filmsAdapter.addItems(filmsDataBase)
+        filmsAdapter.addItems(FilmsBase.getFilms())
         searchInit()
     }
 
     private fun searchInit() {
-        search_view.setOnClickListener {
-            search_view.isIconified = false
+        binding.searchView.setOnClickListener {
+            binding.searchView.isIconified = false
         }
-        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return true
             }
             override fun onQueryTextChange(p0: String): Boolean {
                 if(p0.isEmpty()) {
-                    filmsAdapter.addItems(filmsDataBase)
+                    filmsAdapter.addItems(FilmsBase.getFilms())
                     return true
                 }
-                val result = filmsDataBase.filter {
+                val result = FilmsBase.getFilms().filter {
                     it.title.lowercase(Locale.getDefault()).contains(p0.lowercase(Locale.getDefault()))
                 }
 
@@ -69,7 +58,7 @@ class HomeFragment : Fragment() {
 
 
     private fun initAdapter() {
-        main_recycler.apply {
+        binding.mainRecycler.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
                 override fun click(film: Film) {
                     (requireActivity() as MainActivity).launchDetailsFragment(film)

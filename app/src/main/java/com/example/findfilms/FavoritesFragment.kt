@@ -6,38 +6,48 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.fragment_favorites.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.findfilms.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
-    private lateinit var filmsAdapter: FilmListRecyclerAdapter
+    private lateinit var favFilmsAdapter: FilmListRecyclerAdapter
+    private lateinit var binding: FragmentFavoritesBinding
 
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+    ): View {
+        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AnimationHelper.performFragmentCircularRevealAnimation(favorites_fragment_root, requireActivity(), 2)
-        val favoritesList: List<Film> = emptyList()
-        favorites_recycler
-            .apply {
-                filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
+        AnimationHelper.performFragmentCircularRevealAnimation(
+            binding.root,
+            requireActivity(),
+            2
+        )
+        initAdapter()
+        favFilmsAdapter.addItems(FilmsBase.getFavoriteFilms())
+
+    }
+
+    private fun initAdapter() {
+        binding.favoritesRecycler.apply {
+            favFilmsAdapter =
+                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {
                         (requireActivity() as MainActivity).launchDetailsFragment(film)
                     }
                 })
-                adapter = filmsAdapter
-                layoutManager = LinearLayoutManager(requireContext())
-                val decorator = TopSpacingItemDecoration(8)
-                addItemDecoration(decorator)
-            }
+            adapter = favFilmsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
+
+        }
+
     }
 }
