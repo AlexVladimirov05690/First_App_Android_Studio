@@ -4,7 +4,7 @@ import com.example.findfilms.R
 import com.example.findfilms.domain.Film
 
 class MainRepository {
-    val filmDataBase = listOf(
+    val filmDataBaseRep = listOf(
         Film(
             1,
             "Достать ножи",

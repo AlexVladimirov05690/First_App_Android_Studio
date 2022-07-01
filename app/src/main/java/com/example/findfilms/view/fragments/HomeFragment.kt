@@ -54,10 +54,11 @@ class HomeFragment : Fragment() {
             1
         )
         searchInit()
-        initAdapter()
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
+        viewModel.filmsListLiveData.observe(viewLifecycleOwner) {
             filmDataBase = it
-        })
+        }
+        initAdapter()
+
     }
 
     private fun searchInit() {
