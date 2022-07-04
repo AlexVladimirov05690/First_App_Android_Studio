@@ -2,6 +2,9 @@
 <resources>
     <color name="white">#FFFFFFFF</color>
     <color name="button_share">#0000FF</color>
-
+    <color name="color_0_25">#e84258</color>
+    <color name="color_26_50">#fd8060</color>
+    <color name="color_51_75">#fee191</color>
+    <color name="color_76_100">#b0d8a4</color>
 
 </resources>

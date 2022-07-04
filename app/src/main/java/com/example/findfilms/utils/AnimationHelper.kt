@@ -1,4 +1,4 @@
-package com.example.findfilms
+package com.example.findfilms.utils
 
 import android.app.Activity
 import android.view.View
@@ -9,13 +9,13 @@ import kotlin.math.hypot
 import kotlin.math.roundToInt
 
 object AnimationHelper {
-    private const val menuItems = 4
+    private const val MENU_ITEMS = 4
     fun performFragmentCircularRevealAnimation(rootView: View, activity: Activity, position: Int) {
         Executors.newSingleThreadExecutor().execute {
             while (true) {
                 if (rootView.isAttachedToWindow) {
                     activity.runOnUiThread {
-                        val itemCenter = rootView.width / (menuItems * 2)
+                        val itemCenter = rootView.width / (MENU_ITEMS * 2)
                         val step = (itemCenter * 2) * (position - 1) + itemCenter
                         val x: Int = step
                         val y: Int = rootView.y.roundToInt() + rootView.height

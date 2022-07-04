@@ -1,4 +1,4 @@
-package com.example.findfilms
+package com.example.findfilms.view.rv_adapetrs
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.View
