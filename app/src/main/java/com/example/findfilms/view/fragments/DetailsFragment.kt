@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.findfilms.R
+import com.example.findfilms.com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FragmentDetailsBinding
 import com.example.findfilms.domain.Film
 import com.google.android.material.snackbar.Snackbar
@@ -27,7 +29,10 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         film = arguments?.get("film") as Film
         binding.detailsToolbar.title = film.title
-        binding.detailsPoster.setImageResource(film.poster)
+        Glide.with(this)
+            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .centerCrop()
+            .into(binding.detailsPoster)
         binding.detailsDescription.setText(film.description)
         initButtons()
         binding.detailsInWish.setImageResource(
