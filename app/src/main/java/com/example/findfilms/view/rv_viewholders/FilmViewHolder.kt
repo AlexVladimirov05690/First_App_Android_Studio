@@ -2,6 +2,7 @@ package com.example.findfilms.view.rv_viewholders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.findfilms.com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FilmItemBinding
 import com.example.findfilms.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*
@@ -15,9 +16,10 @@ class FilmViewHolder(var binding:FilmItemBinding) : RecyclerView.ViewHolder(bind
     fun bind(film: Film) {
         title.text = film.title
         Glide.with(itemView)
-            .load(film.poster)
+            .load(ApiConstants.IMAGES_URL + "w342" + film.poster)
+            .centerInside()
             .into(poster)
-        description.setText(film.short_desc)
+        description.setText(film.description)
         ratingDonut.setProgress((film.rating * 10).toInt())
     }
 }
