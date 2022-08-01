@@ -15,6 +15,13 @@
     <string name="film_add_to_favorite">Фильм добавлен в Избранное</string>
     <string name="film_remove_from_favorite">Фильм удалён из Избранного</string>
     <string name="test_text">11111111</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_settings_title_text">Настройки</string>
+    <string name="radio_button_popular">Популярные</string>
+    <string name="radio_button_top_rated">Топ</string>
+    <string name="radio_button_upcoming">Скоро</string>
+    <string name="radio_button_playing">В кинотеатрах</string>
+    <string name="radio_group_header">Подборка на главном экране:</string>
 
 
 </resources>

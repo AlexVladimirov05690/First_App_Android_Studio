@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.findfilms.view.rv_adapetrs.FilmListRecyclerAdapter
 import com.example.findfilms.view.rv_adapetrs.TopSpacingItemDecoration
 import java.util.*
-import com.example.findfilms.R
 import com.example.findfilms.databinding.FragmentHomeBinding
 import com.example.findfilms.domain.Film
 import com.example.findfilms.utils.AnimationHelper
@@ -56,8 +54,10 @@ class HomeFragment : Fragment() {
         searchInit()
         viewModel.filmsListLiveData.observe(viewLifecycleOwner) {
             filmDataBase = it
+            filmsAdapter.addItems(it)
         }
         initAdapter()
+        initPullToRefresh()
 
     }
 
@@ -102,6 +102,17 @@ class HomeFragment : Fragment() {
             val decorator = TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
 
+        }
+    }
+
+    private fun initPullToRefresh(){
+        binding.pullToRefresh.setOnRefreshListener {
+            //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
+            filmsAdapter.items.clear()
+            //Делаем новый запрос фильмов на сервер
+            viewModel.getFilms()
+            //Убираем крутящееся колечко
+            binding.pullToRefresh.isRefreshing = false
         }
     }
 }

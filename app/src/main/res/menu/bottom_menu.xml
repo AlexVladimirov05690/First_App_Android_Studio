@@ -26,4 +26,10 @@
         android:title="@string/selections"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/set"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/setting"
+        app:showAsAction="ifRoom"/>
+
 </menu>
