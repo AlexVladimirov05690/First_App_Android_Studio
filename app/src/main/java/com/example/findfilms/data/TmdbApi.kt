@@ -1,7 +1,7 @@
-package com.example.findfilms.com.example.findfilms.data
+package com.example.findfilms.data
 
 
-import com.example.findfilms.com.example.findfilms.data.Entity.TmdbResultsDTO
+import com.example.findfilms.data.Entity.TmdbResultsDTO
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

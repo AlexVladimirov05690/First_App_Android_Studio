@@ -1,8 +1,8 @@
 package com.example.findfilms.domain
 
 import com.example.findfilms.API
-import com.example.findfilms.com.example.findfilms.data.Entity.TmdbResultsDTO
-import com.example.findfilms.com.example.findfilms.data.TmdbApi
+import com.example.findfilms.data.Entity.TmdbResultsDTO
+import com.example.findfilms.data.TmdbApi
 import com.example.findfilms.com.example.findfilms.utils.Converter
 import com.example.findfilms.data.MainRepository
 import com.example.findfilms.data.PreferenceProvider
@@ -39,6 +39,8 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
     fun getDefaultCategoryToPreference() = preference.getDefaultCategory()
 
     fun getFilmsFromDb(): List<Film> = repo.getAllFromDb()
+
+    fun getFavoritesFilms() : List<Film> = repo.getFavoritesFromDb()
 
 
 }

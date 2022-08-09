@@ -1,8 +1,9 @@
-package com.example.findfilms.com.example.findfilms.di
+package com.example.findfilms.di
 
-import com.example.findfilms.com.example.findfilms.di.module.DatabaseModule
-import com.example.findfilms.com.example.findfilms.di.module.DomainModule
-import com.example.findfilms.com.example.findfilms.di.module.RemoteModule
+import com.example.findfilms.di.module.DatabaseModule
+import com.example.findfilms.di.module.DomainModule
+import com.example.findfilms.di.module.RemoteModule
+import com.example.findfilms.viewmodel.FavoritesFragmentViewModel
 import com.example.findfilms.viewmodel.HomeFragmentViewModel
 import com.example.findfilms.viewmodel.SettingsFragmentViewModel
 import dagger.Component
@@ -19,6 +20,6 @@ import javax.inject.Singleton
 )
 interface AppComponent {
     fun inject(homeFragmentViewModel: HomeFragmentViewModel)
-
+    fun inject(favoritesFragmentViewModel: FavoritesFragmentViewModel)
     fun inject(settingsFragmentViewModel: SettingsFragmentViewModel)
 }

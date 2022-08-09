@@ -1,8 +1,8 @@
-package com.example.findfilms.com.example.findfilms.di.module
+package com.example.findfilms.di.module
 
 import com.example.findfilms.BuildConfig
-import com.example.findfilms.com.example.findfilms.data.ApiConstants
-import com.example.findfilms.com.example.findfilms.data.TmdbApi
+import com.example.findfilms.data.ApiConstants
+import com.example.findfilms.data.TmdbApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

@@ -1,4 +1,4 @@
-package com.example.findfilms.com.example.findfilms.data.Entity
+package com.example.findfilms.data.Entity
 
 import com.google.gson.annotations.SerializedName
 

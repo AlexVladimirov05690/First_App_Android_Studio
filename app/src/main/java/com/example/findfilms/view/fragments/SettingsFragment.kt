@@ -1,6 +1,5 @@
 package com.example.findfilms.view.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

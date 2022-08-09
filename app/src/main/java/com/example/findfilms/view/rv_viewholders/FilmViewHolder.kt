@@ -2,7 +2,7 @@ package com.example.findfilms.view.rv_viewholders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.findfilms.com.example.findfilms.data.ApiConstants
+import com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FilmItemBinding
 import com.example.findfilms.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*

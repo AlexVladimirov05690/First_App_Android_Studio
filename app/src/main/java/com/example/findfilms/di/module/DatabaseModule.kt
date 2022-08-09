@@ -1,4 +1,4 @@
-package com.example.findfilms.com.example.findfilms.di.module
+package com.example.findfilms.di.module
 
 import android.content.Context
 import com.example.findfilms.data.MainRepository

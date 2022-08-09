@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.findfilms.R
-import com.example.findfilms.com.example.findfilms.data.ApiConstants
+import com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FragmentDetailsBinding
 import com.example.findfilms.domain.Film
 import com.google.android.material.snackbar.Snackbar

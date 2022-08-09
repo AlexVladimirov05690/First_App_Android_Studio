@@ -1,4 +1,4 @@
-package com.example.findfilms.com.example.findfilms.data
+package com.example.findfilms.data
 
 object ApiConstants {
     const val BASE_URL = "https://api.themoviedb.org/"
