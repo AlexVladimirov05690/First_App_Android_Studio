@@ -4,6 +4,7 @@ import com.example.findfilms.API
 import com.example.findfilms.com.example.findfilms.data.Entity.TmdbResultsDTO
 import com.example.findfilms.com.example.findfilms.data.TmdbApi
 import com.example.findfilms.com.example.findfilms.utils.Converter
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.MainRepository
 import com.example.findfilms.data.PreferenceProvider
 import com.example.findfilms.viewmodel.HomeFragmentViewModel
@@ -20,7 +21,7 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
             ) {
                 val list = Converter.convertApiListToDtoList(response.body()?.tmbFilms)
                 list.forEach{
-                    repo.putDb(film = it)
+                    repo.putDb(list)
                 }
                 callback.onSuccess(list)
             }
@@ -38,7 +39,9 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
 
     fun getDefaultCategoryToPreference() = preference.getDefaultCategory()
 
-    fun getFilmsFromDb(): List<Film> = repo.getAllFromDb()
+    fun getFilmsFromDB(): List<Film> = repo.getAllFromDb()
+
+
 
 
 }

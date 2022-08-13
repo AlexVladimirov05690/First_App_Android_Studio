@@ -1,7 +1,7 @@
 package com.example.findfilms.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.findfilms.domain.Film
+import com.example.findfilms.data.Entity.Film
 
 object DiffFilms {
     val CALLBACK: DiffUtil.ItemCallback<Film> = object : DiffUtil.ItemCallback<Film>(){

@@ -12,7 +12,7 @@ import com.example.findfilms.view.rv_adapetrs.FilmListRecyclerAdapter
 import com.example.findfilms.view.rv_adapetrs.TopSpacingItemDecoration
 import java.util.*
 import com.example.findfilms.databinding.FragmentHomeBinding
-import com.example.findfilms.domain.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.utils.AnimationHelper
 import com.example.findfilms.view.MainActivity
 import com.example.findfilms.viewmodel.HomeFragmentViewModel

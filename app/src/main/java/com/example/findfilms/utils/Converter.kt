@@ -1,7 +1,7 @@
 package com.example.findfilms.com.example.findfilms.utils
 
 import com.example.findfilms.com.example.findfilms.data.Entity.TmdbFilm
-import com.example.findfilms.domain.Film
+import com.example.findfilms.data.Entity.Film
 
 object Converter {
     fun convertApiListToDtoList(list: List<TmdbFilm>?): List<Film> {

@@ -1,13 +1,12 @@
 package com.example.findfilms.view
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
-import com.example.findfilms.domain.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
