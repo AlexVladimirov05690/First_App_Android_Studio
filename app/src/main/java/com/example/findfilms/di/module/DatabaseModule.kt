@@ -7,7 +7,6 @@ import com.example.findfilms.data.dao.FilmDao
 import com.example.findfilms.data.db.AppDatabase
 import dagger.Module
 import dagger.Provides
-import java.io.File
 import javax.inject.Singleton
 
 @Module

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.findfilms.view.rv_adapetrs.FilmListRecyclerAdapter
@@ -52,12 +54,19 @@ class HomeFragment : Fragment() {
             1
         )
         searchInit()
+        viewModel.showProgressBar.observe(viewLifecycleOwner) {
+            binding.progressBar.isVisible = it
+        }
+        viewModel.networkError.observe(viewLifecycleOwner) {
+            Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
+        }
         viewModel.filmsListLiveData.observe(viewLifecycleOwner) {
             filmDataBase = it
             filmsAdapter.addItems(it)
         }
         initAdapter()
         initPullToRefresh()
+
 
     }
 

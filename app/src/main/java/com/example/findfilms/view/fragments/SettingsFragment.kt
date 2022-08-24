@@ -1,6 +1,5 @@
 package com.example.findfilms.view.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,14 +32,14 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         AnimationHelper.performFragmentCircularRevealAnimation(settings_fragment_root, requireActivity(), 5)
-        viewModel.categoryPropertyLifeData.observe(viewLifecycleOwner, Observer<String> {
+        viewModel.categoryPropertyLifeData.observe(viewLifecycleOwner){
             when(it) {
                 POPULAR_CATEGORY -> binding.radioGroup.check(R.id.radio_popular)
                 TOP_RATED_CATEGORY -> binding.radioGroup.check(R.id.radio_top_rated)
                 UPCOMING_CATEGORY -> binding.radioGroup.check(R.id.radio_upcoming)
                 NOW_PLAYING_CATEGORY -> binding.radioGroup.check(R.id.radio_now_playing)
             }
-        })
+        }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedID ->
             when(checkedID) {
                 R.id.radio_popular -> viewModel.putCategoryProperty(POPULAR_CATEGORY)

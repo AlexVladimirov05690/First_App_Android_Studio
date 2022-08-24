@@ -22,6 +22,7 @@
     <string name="radio_button_upcoming">Скоро</string>
     <string name="radio_button_playing">В кинотеатрах</string>
     <string name="radio_group_header">Подборка на главном экране:</string>
+    <string name="network_error">Ошибка! Проверьте соединение и повторите попытку</string>
 
 
 </resources>
