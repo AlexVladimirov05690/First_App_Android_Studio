@@ -1,27 +1,32 @@
 package com.example.findfilms.viewmodel
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.findfilms.App
 import com.example.findfilms.domain.Film
 import com.example.findfilms.domain.Interactor
-import com.example.findfilms.view.MainActivity
+import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel() {
     val filmsListLiveData: MutableLiveData<List<Film>> = MutableLiveData()
-    private var interactor: Interactor = App.instance.interactor
-
+    @Inject
+    lateinit var interactor: Interactor
     init {
+        App.instance.dagger.inject(this)
+        getFilms()
+
+    }
+
+    fun getFilms() {
         interactor.getFilmsFromApi(1, object : ApiCallback {
             override fun onSuccess(films: List<Film>) {
                 filmsListLiveData.postValue(films)
             }
-            override fun onFailure() {
 
+            override fun onFailure() {
+                filmsListLiveData.postValue(interactor.getFilmsFromDb())
             }
         })
-
     }
 
     interface ApiCallback {

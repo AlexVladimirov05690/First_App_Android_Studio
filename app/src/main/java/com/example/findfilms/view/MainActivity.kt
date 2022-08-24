@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity() {
         binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.set -> {
-                    Toast.makeText(this, R.string.setting, Toast.LENGTH_SHORT).show()
+                    val tag = "settings"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: SettingsFragment(), tag)
                     true
                 }
                 else -> false

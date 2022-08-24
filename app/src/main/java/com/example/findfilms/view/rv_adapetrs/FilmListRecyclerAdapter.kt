@@ -12,7 +12,7 @@ import com.example.findfilms.domain.Film
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items = mutableListOf<Film>()
+    var items = mutableListOf<Film>()
     private lateinit var binding: FilmItemBinding
 
     override fun getItemCount() = items.size

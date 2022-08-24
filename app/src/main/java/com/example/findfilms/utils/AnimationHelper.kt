@@ -9,7 +9,7 @@ import kotlin.math.hypot
 import kotlin.math.roundToInt
 
 object AnimationHelper {
-    private const val MENU_ITEMS = 4
+    private const val MENU_ITEMS = 5
     fun performFragmentCircularRevealAnimation(rootView: View, activity: Activity, position: Int) {
         Executors.newSingleThreadExecutor().execute {
             while (true) {
