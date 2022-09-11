@@ -16,13 +16,19 @@ import java.util.*
 import com.example.findfilms.databinding.FragmentHomeBinding
 import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.utils.AnimationHelper
+import com.example.findfilms.utils.AutoDisposable
+import com.example.findfilms.utils.addTo
 import com.example.findfilms.view.MainActivity
 import com.example.findfilms.viewmodel.HomeFragmentViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+
 
 class HomeFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
+    private val autoDisposable = AutoDisposable()
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private lateinit var binding: FragmentHomeBinding
     private var filmDataBase = listOf<Film>()
@@ -36,11 +42,12 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
+        autoDisposable.bindTo(lifecycle)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -54,19 +61,26 @@ class HomeFragment : Fragment() {
             1
         )
         searchInit()
-        viewModel.showProgressBar.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
-        }
         viewModel.networkError.observe(viewLifecycleOwner) {
             Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
         }
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner) {
-            filmDataBase = it
-            filmsAdapter.addItems(it)
-        }
         initAdapter()
         initPullToRefresh()
-
+        viewModel.filmsListData
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{ list ->
+                filmsAdapter.addItems(list)
+                filmDataBase = list
+            }
+            .addTo(autoDisposable)
+        viewModel.showProgressBar
+            .observeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{
+                binding.progressBar.isVisible = it
+            }
+            .addTo(autoDisposable)
 
     }
 
@@ -114,7 +128,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initPullToRefresh(){
+    private fun initPullToRefresh() {
         binding.pullToRefresh.setOnRefreshListener {
             //Чистим адаптер(items нужно будет сделать паблик или создать для этого публичный метод)
             filmsAdapter.items.clear()

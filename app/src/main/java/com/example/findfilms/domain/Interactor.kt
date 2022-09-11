@@ -1,6 +1,5 @@
 package com.example.findfilms.domain
 
-import androidx.lifecycle.LiveData
 import com.example.findfilms.API
 import com.example.findfilms.com.example.findfilms.data.Entity.TmdbResultsDTO
 import com.example.findfilms.com.example.findfilms.data.TmdbApi
@@ -8,28 +7,34 @@ import com.example.findfilms.com.example.findfilms.utils.Converter
 import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.MainRepository
 import com.example.findfilms.data.PreferenceProvider
-import com.example.findfilms.viewmodel.HomeFragmentViewModel
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi, private val preference: PreferenceProvider) {
-    var list = mutableListOf<Film>()
-    fun getFilmsFromApi(page: Int, callback: HomeFragmentViewModel.ApiCallback) {
+    var progressBarState: BehaviorSubject<Boolean> = BehaviorSubject.create()
+    fun getFilmsFromApi(page: Int) {
+        progressBarState.onNext(true)
         retrofitService.getFilms(getDefaultCategoryToPreference(), API.KEY, "ru-RU", page).enqueue(object : Callback<TmdbResultsDTO> {
             override fun onResponse(
                 call: Call<TmdbResultsDTO>,
                 response: Response<TmdbResultsDTO>
             ) {
-                list = Converter.convertApiListToDtoList(response.body()?.tmbFilms).toMutableList()
-                list.forEach{
+                val list = Converter.convertApiListToDtoList(response.body()?.tmbFilms)
+                Completable.fromSingle<List<Film>> {
                     repo.putDb(list)
                 }
-                callback.onSuccess()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe()
+                progressBarState.onNext(false)
             }
 
             override fun onFailure(call: Call<TmdbResultsDTO>, t: Throwable) {
-                callback.onFailure()
+                progressBarState.onNext(false)
             }
 
         })
@@ -41,7 +46,7 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
 
     fun getDefaultCategoryToPreference() = preference.getDefaultCategory()
 
-    fun getFilmsFromDB(): LiveData<List<Film>> = repo.getAllFromDb()
+    fun getFilmsFromDB(): Observable<List<Film>> = repo.getAllFromDb()
 
     fun clearFilmsFromDB(list: List<Film>) = repo.clearAllFromDb(list)
 

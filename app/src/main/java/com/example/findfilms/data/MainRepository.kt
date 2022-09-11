@@ -1,9 +1,8 @@
 package com.example.findfilms.data
 
-
-import androidx.lifecycle.LiveData
 import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.dao.FilmDao
+import io.reactivex.rxjava3.core.Observable
 import java.util.concurrent.Executors
 
 
@@ -14,7 +13,7 @@ class MainRepository(private val filmDao: FilmDao) {
             filmDao.insertAll(films)
         }
     }
-    fun getAllFromDb(): LiveData<List<Film>> = filmDao.getCachedFilms()
+    fun getAllFromDb(): Observable<List<Film>> = filmDao.getCachedFilms()
 
     fun clearAllFromDb(films: List<Film>) {
         filmDao.clearCachedFilms(films)
