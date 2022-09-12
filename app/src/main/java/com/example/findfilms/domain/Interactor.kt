@@ -3,7 +3,6 @@ package com.example.findfilms.domain
 import com.example.findfilms.API
 import com.example.findfilms.com.example.findfilms.data.Entity.TmdbResultsDTO
 import com.example.findfilms.com.example.findfilms.data.TmdbApi
-import com.example.findfilms.com.example.findfilms.utils.Converter
 import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.MainRepository
 import com.example.findfilms.data.PreferenceProvider
@@ -24,7 +23,24 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
                 call: Call<TmdbResultsDTO>,
                 response: Response<TmdbResultsDTO>
             ) {
-                val list = Converter.convertApiListToDtoList(response.body()?.tmbFilms)
+                //val list = Converter.convertApiListToDtoList(response.body()?.tmbFilms)
+                val list = mutableListOf<Film>()
+                val requestAPI = response.body()?.tmbFilms
+                Observable.fromArray(requestAPI)
+                    .subscribeOn(Schedulers.io())
+                    .subscribe{requestAPI ->
+                        requestAPI?.forEach {
+                            list.add(
+                                Film(
+                                    title = it.title,
+                                    poster = it.posterPath,
+                                    description = it.overview,
+                                    rating = it.voteAverage,
+                                    isInFavorites = false
+                                )
+                            )
+                        }
+                    }
                 Completable.fromSingle<List<Film>> {
                     repo.putDb(list)
                 }

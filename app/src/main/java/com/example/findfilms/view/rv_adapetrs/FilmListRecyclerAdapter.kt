@@ -13,23 +13,19 @@ import com.example.findfilms.data.Entity.Film
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var items = mutableListOf<Film>()
-    private lateinit var binding: FilmItemBinding
 
     override fun getItemCount() = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        binding = FilmItemBinding.inflate(inflater, parent, false)
-        return FilmViewHolder(DataBindingUtil.inflate(inflater, R.layout.film_item, parent, false))
+        return FilmViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is FilmViewHolder -> {
                 holder.bind(items[position])
-                holder.binding.itemContainer.setOnClickListener{
+                holder.itemView.setOnClickListener{
                     clickListener.click(items[position])
-                    binding.executePendingBindings()
                 }
             }
         }
