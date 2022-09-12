@@ -1,14 +1,28 @@
 <resources>
     <string name="app_name">FindFilms</string>
-    <string name="find_film">Найти фильм</string>
-    <string name="recommendations">Рекомендации</string>
+    <string name="watch_later_menu">Смотреть позже</string>
     <string name="favorites">Избранное</string>
-    <string name="wishlist">В список желаний</string>
+    <string name="selections">Подборки</string>
     <string name="setting">Настройки</string>
-    <string name="content_description">Постер</string>
-    <string name="content_description_back">Фон</string>
-    <string name="link">Постеры взяты с сайта: https://www.movieposters.com/</string>
     <string name="top_bar_name">Найти кино</string>
+    <string name="desc_posters">Постер в центре</string>
+    <string name="do_you_want_exit">Вы уверены, что хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="float_button_desc">Кнопка</string>
+    <string name="main">Главная</string>
+    <string name="Setting">Настройки</string>
+    <string name="film_add_to_favorite">Фильм добавлен в Избранное</string>
+    <string name="film_remove_from_favorite">Фильм удалён из Избранного</string>
+    <string name="test_text">11111111</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_settings_title_text">Настройки</string>
+    <string name="radio_button_popular">Популярные</string>
+    <string name="radio_button_top_rated">Топ</string>
+    <string name="radio_button_upcoming">Скоро</string>
+    <string name="radio_button_playing">В кинотеатрах</string>
+    <string name="radio_group_header">Подборка на главном экране:</string>
+    <string name="network_error">Ошибка! Проверьте соединение и повторите попытку</string>
 
 
 </resources>

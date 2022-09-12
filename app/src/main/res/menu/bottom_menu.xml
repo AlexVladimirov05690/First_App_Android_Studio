@@ -3,21 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/main"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/main"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/fav"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favorites"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/rec"
-        android:icon="@drawable/ic_recommendations"
-        android:title="@string/recommendations"
+        android:id="@+id/watch_later_menu"
+        android:icon="@drawable/ic_watch_later"
+        android:title="@string/watch_later_menu"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/in_wishlist"
-        android:icon="@drawable/ic_add_to_wish_list"
-        android:title="@string/wishlist"
+        android:id="@+id/selections"
+        android:icon="@drawable/ic_baseline_video_library_24"
+        android:title="@string/selections"
         app:showAsAction="ifRoom"/>
 
 </menu>
