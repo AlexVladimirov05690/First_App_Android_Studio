@@ -22,6 +22,11 @@
     <string name="radio_button_upcoming">Скоро</string>
     <string name="radio_button_playing">В кинотеатрах</string>
     <string name="radio_group_header">Подборка на главном экране:</string>
+    <string name="network_error">Ошибка! Проверьте соединение и повторите попытку</string>
+    <string name="permission_storage">Нет разрешения. Пожалуйста, предоставьте разрешение</string>
+    <string name="downloaded_to_gallery">"Сохранено в галерею"</string>
+    <string name="open">В галерею</string>
+    <string name="not_implemented_error">must bind AutoDisposable to a Lifecycle first</string>
 
 
 </resources>
