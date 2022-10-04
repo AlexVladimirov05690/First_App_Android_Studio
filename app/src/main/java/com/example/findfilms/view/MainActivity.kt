@@ -1,22 +1,32 @@
 package com.example.findfilms.view
 
+import android.content.BroadcastReceiver
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.findfilms.*
+import com.example.findfilms.com.example.findfilms.utils.receivers.PowerChecker
 import com.example.findfilms.databinding.ActivityMainBinding
 import com.example.findfilms.domain.Film
 import com.example.findfilms.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var receiver: BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        receiver = PowerChecker()
+        val filters = IntentFilter().apply {
+            addAction(Intent.ACTION_POWER_CONNECTED)
+            addAction(Intent.ACTION_BATTERY_LOW)
+        }
+        registerReceiver(receiver, filters)
         initButton()
         supportFragmentManager
             .beginTransaction()
@@ -42,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(receiver)
+    }
     private fun initButton() {
 
         binding.topAppBar.setOnMenuItemClickListener {
