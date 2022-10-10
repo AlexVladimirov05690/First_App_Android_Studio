@@ -27,6 +27,8 @@
     <string name="downloaded_to_gallery">"Сохранено в галерею"</string>
     <string name="open">В галерею</string>
     <string name="not_implemented_error">must bind AutoDisposable to a Lifecycle first</string>
+    <string name="battery_low">Низкий заряд батареи</string>
+    <string name="power_connect">Идёт зарядка</string>
 
 
 </resources>
