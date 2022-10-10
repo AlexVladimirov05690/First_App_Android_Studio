@@ -22,6 +22,7 @@ import com.example.findfilms.R
 import com.example.findfilms.com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FragmentDetailsBinding
 import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.view.notification.NotificationHelper
 import com.example.findfilms.viewmodel.DetailsFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
@@ -60,6 +61,7 @@ class DetailsFragment : Fragment() {
     private fun initButtons() {
         binding.watchLater.setOnClickListener {
             Snackbar.make(binding.root, R.string.watch_later_menu, Snackbar.LENGTH_SHORT).show()
+            NotificationHelper.createNotification(requireContext(), film)
         }
         binding.detailsInWish.setOnClickListener {
             if (!film.isInFavorites) {
