@@ -32,7 +32,17 @@ class MainActivity : AppCompatActivity() {
             .add(binding.fragmentPlace.id, HomeFragment())
             .addToBackStack(null)
             .commit()
+
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        if (intent != null) {
+            launchDetailsFragment(intent.extras?.get("film") as Film)
+
+        }
+    }
+
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 1) {

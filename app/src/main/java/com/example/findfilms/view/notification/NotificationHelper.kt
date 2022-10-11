@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.bumptech.glide.Glide
@@ -20,8 +21,9 @@ object NotificationHelper {
 
     fun createNotification(context: Context, film: Film) {
         val mIntent = Intent(context, MainActivity::class.java)
+        mIntent.putExtra("film", film)
         val pendingIntent =
-            PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_ONE_SHOT)
         val builder = NotificationCompat.Builder(context!!, CHANNEL_ID).apply {
             setSmallIcon(R.drawable.ic_watch_later)
             setContentTitle("Помнишь, ты хотел посмотреть")
