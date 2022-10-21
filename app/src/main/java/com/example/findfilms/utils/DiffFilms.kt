@@ -3,15 +3,24 @@ package com.example.findfilms.utils
 import androidx.recyclerview.widget.DiffUtil
 import com.example.findfilms.data.Entity.Film
 
-object DiffFilms {
-    val CALLBACK: DiffUtil.ItemCallback<Film> = object : DiffUtil.ItemCallback<Film>(){
-        override fun areItemsTheSame(oldItem: Film, newItem: Film): Boolean {
-            return oldItem.title == newItem.title
-        }
-
-        override fun areContentsTheSame(oldItem: Film, newItem: Film): Boolean {
-            return oldItem.description == newItem.description
-        }
-
+class DiffFilms(private val oldListFilms: List<Film>, private val newListFilms: List<Film>): DiffUtil.Callback() {
+    override fun getOldListSize(): Int {
+        return oldListFilms.size
     }
+
+    override fun getNewListSize(): Int {
+        return newListFilms.size
+    }
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldListFilms[oldItemPosition].id == newListFilms[newItemPosition].id
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldFilm = oldListFilms[oldItemPosition]
+        val newFilm = newListFilms[newItemPosition]
+        return oldFilm.title == newFilm.title &&
+                oldFilm.description == newFilm.description
+    }
+
 }

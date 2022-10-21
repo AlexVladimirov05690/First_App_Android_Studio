@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
 import com.example.findfilms.data.Entity.Film
-import com.example.findfilms.utils.PowerChecker
+import com.example.findfilms.utils.receivers.PowerCheckerBroadcast
 import com.example.findfilms.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        receiver = PowerChecker()
+        receiver = PowerCheckerBroadcast()
         val filters = IntentFilter().apply {
             addAction(Intent.ACTION_POWER_CONNECTED)
             addAction(Intent.ACTION_BATTERY_LOW)
@@ -32,15 +32,12 @@ class MainActivity : AppCompatActivity() {
             .add(binding.fragmentPlace.id, HomeFragment())
             .addToBackStack(null)
             .commit()
-
     }
 
     override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        if (intent != null) {
+        if (intent?.extras?.get("film") is Film) {
             launchDetailsFragment(intent.extras?.get("film") as Film)
-
-        }
+        } else super.onNewIntent(intent)
     }
 
 
