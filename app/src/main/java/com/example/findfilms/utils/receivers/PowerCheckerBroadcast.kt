@@ -1,4 +1,4 @@
-package com.example.findfilms.utils
+package com.example.findfilms.utils.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 import com.example.findfilms.R
 
-class PowerChecker(): BroadcastReceiver() {
+class PowerCheckerBroadcast(): BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         if(intent == null) return
         when (intent.action) {
