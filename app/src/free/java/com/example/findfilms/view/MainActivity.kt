@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -84,8 +85,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fav -> {
                     val tag = "favorites"
-                    val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment ?: FavoritesFragment(), tag)
+                    Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+//                    val fragment = checkFragmentExistence(tag)
+//                    changeFragment(fragment ?: FavoritesFragment(), tag)
                     true
                 }
                 R.id.watch_later_menu -> {
@@ -96,8 +98,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.selections -> {
                     val tag = "selections"
-                    val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment ?: SelectionsFragment(), tag)
+                    Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+//                    val fragment = checkFragmentExistence(tag)
+//                    changeFragment(fragment ?: SelectionsFragment(), tag)
                     true
                 }
                 else -> false
