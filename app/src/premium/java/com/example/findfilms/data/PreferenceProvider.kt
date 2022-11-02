@@ -3,7 +3,6 @@ package com.example.findfilms.data
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import java.util.*
 
 class PreferenceProvider(context: Context) {
     private val appContext = context.applicationContext
@@ -30,7 +29,6 @@ class PreferenceProvider(context: Context) {
 
     fun timeForClearDb(timePrev: Long): Boolean {
         val timeNow = System.currentTimeMillis()
-
         return true
     }
 
