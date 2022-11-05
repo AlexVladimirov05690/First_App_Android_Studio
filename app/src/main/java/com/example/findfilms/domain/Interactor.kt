@@ -60,6 +60,11 @@ class Interactor(val repo: MainRepository, private val retrofitService: TmdbApi,
         preference.saveDefaultCategory(category)
     }
 
+    fun checkPromoPeriod(): Boolean {
+        return preference.checkTrialPeriod()
+    }
+
+
     fun getDefaultCategoryToPreference() = preference.getDefaultCategory()
 
     fun getFilmsFromDB(): Observable<List<Film>> = repo.getAllFromDb()

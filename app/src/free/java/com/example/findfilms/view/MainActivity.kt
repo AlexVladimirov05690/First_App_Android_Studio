@@ -11,12 +11,20 @@ import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
 import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.domain.Interactor
 import com.example.findfilms.utils.PowerChecker
 import com.example.findfilms.view.fragments.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var interactor: Interactor
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var receiver: BroadcastReceiver
+    init {
+        App.instance.dagger.inject(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -85,9 +93,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fav -> {
                     val tag = "favorites"
-                    Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
-//                    val fragment = checkFragmentExistence(tag)
-//                    changeFragment(fragment ?: FavoritesFragment(), tag)
+                    if (interactor.checkPromoPeriod()) {
+                        val fragment = checkFragmentExistence(tag)
+                        changeFragment(fragment ?: FavoritesFragment(), tag)
+                    } else {
+                        Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
                 R.id.watch_later_menu -> {
