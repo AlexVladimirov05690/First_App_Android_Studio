@@ -14,7 +14,7 @@ class PreferenceProvider(context: Context) {
 
     init {
         preference.edit { putInt(KEY_TIMEOUT_CLEAR_DB, TIMEOUT_CLEAR_DB_MINUTE) }
-        if (!preference.getBoolean(KEY_FIRST_LAUNCH, false)) {
+        if (preference.getBoolean(KEY_FIRST_LAUNCH, true)) {
             val timeFirstLaunch = Calendar.getInstance()
             preference.edit { putString(KEY_DEFAULT_CATEGORY, DEFAULT_CATEGORY) }
             preference.edit { putLong(FIRST_RUN_TIME, timeFirstLaunch.timeInMillis) }
