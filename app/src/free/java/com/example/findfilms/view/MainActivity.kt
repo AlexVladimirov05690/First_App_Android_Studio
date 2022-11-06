@@ -22,9 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var receiver: BroadcastReceiver
+
     init {
         App.instance.dagger.inject(this)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -47,8 +49,9 @@ class MainActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         if (intent != null) {
-            launchDetailsFragment(intent.extras?.get("film") as Film)
-
+            if (intent.extras?.get("film") is Film) {
+                launchDetailsFragment(intent.extras?.get("film") as Film)
+            }
         }
     }
 
