@@ -21,7 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.findfilms.R
 import com.example.findfilms.com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FragmentDetailsBinding
-import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.data.entity.Film
 import com.example.findfilms.view.notification.NotificationHelper
 import com.example.findfilms.viewmodel.DetailsFragmentViewModel
 import com.google.android.material.snackbar.Snackbar

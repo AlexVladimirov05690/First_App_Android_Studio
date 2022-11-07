@@ -2,7 +2,7 @@ package com.example.findfilms.com.example.findfilms.di.module
 
 import android.content.Context
 import androidx.room.Room
-import com.example.findfilms.data.MainRepository
+import com.example.findfilms.data.repositories.MainRepository
 import com.example.findfilms.data.dao.FilmDao
 import com.example.findfilms.data.db.AppDatabase
 import dagger.Module

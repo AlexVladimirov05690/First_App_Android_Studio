@@ -12,7 +12,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.findfilms.R
 import com.example.findfilms.com.example.findfilms.data.ApiConstants
-import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.data.entity.Film
 import com.example.findfilms.view.MainActivity
 
 object NotificationHelper {
@@ -23,7 +23,7 @@ object NotificationHelper {
         mIntent.putExtra("film", film)
         val pendingIntent =
             PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_ONE_SHOT)
-        val builder = NotificationCompat.Builder(context!!, CHANNEL_ID).apply {
+        val builder = NotificationCompat.Builder(context, CHANNEL_ID).apply {
             setSmallIcon(R.drawable.ic_watch_later)
             setContentTitle("Помнишь, ты хотел посмотреть")
             setContentText(film.title)

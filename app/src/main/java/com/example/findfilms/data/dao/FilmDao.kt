@@ -2,7 +2,7 @@ package com.example.findfilms.data.dao
 
 
 import androidx.room.*
-import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.data.entity.Film
 import io.reactivex.rxjava3.core.Observable
 
 @Dao

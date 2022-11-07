@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
-import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.data.entity.Film
 import com.example.findfilms.domain.Interactor
 import com.example.findfilms.utils.PowerChecker
 import com.example.findfilms.view.fragments.*
@@ -112,9 +112,13 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.selections -> {
                     val tag = "selections"
-                    Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
-//                    val fragment = checkFragmentExistence(tag)
-//                    changeFragment(fragment ?: SelectionsFragment(), tag)
+                    if (interactor.checkPromoPeriod()) {
+                        val fragment = checkFragmentExistence(tag)
+                        changeFragment(fragment ?: SelectionsFragment(), tag)
+                    } else {
+                        Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+                    }
+
                     true
                 }
                 else -> false
