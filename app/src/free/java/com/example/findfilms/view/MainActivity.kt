@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.domain.Interactor
 import com.example.findfilms.utils.PowerChecker
 import com.example.findfilms.view.fragments.*

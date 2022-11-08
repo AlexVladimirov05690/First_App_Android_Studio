@@ -2,7 +2,7 @@ package com.example.findfilms.data.dao
 
 
 import androidx.room.*
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
 import io.reactivex.rxjava3.core.Observable
 
 @Dao
@@ -15,4 +15,5 @@ interface FilmDao {
 
     @Delete
     fun clearCachedFilms(list: List<Film>)
+
 }

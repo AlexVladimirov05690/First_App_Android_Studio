@@ -1,4 +1,4 @@
-package com.example.findfilms.data.entity
+package com.example.findfilms.data.Entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

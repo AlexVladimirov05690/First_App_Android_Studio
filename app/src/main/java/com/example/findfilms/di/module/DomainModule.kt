@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.findfilms.com.example.findfilms.data.TmdbApi
 import com.example.findfilms.data.repositories.MainRepository
 import com.example.findfilms.data.PreferenceProvider
+import com.example.findfilms.data.repositories.FavoriteRepository
 import com.example.findfilms.domain.Interactor
 import dagger.Module
 import dagger.Provides
@@ -23,7 +24,8 @@ class DomainModule(val context: Context) {
     @Provides
     fun provideInteractor(
         repository: MainRepository,
+        favoriteRepository: FavoriteRepository,
         tmdbApi: TmdbApi,
         preferenceProvider: PreferenceProvider,
-    ) = Interactor(repo = repository, retrofitService = tmdbApi, preference = preferenceProvider)
+    ) = Interactor(repo = repository, favoriteRepo = favoriteRepository, retrofitService = tmdbApi, preference = preferenceProvider)
 }

@@ -1,6 +1,6 @@
 package com.example.findfilms.data.repositories
 
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.dao.FilmDao
 import io.reactivex.rxjava3.core.Observable
 import java.util.concurrent.Executors

@@ -18,16 +18,26 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.findfilms.App
 import com.example.findfilms.R
 import com.example.findfilms.com.example.findfilms.data.ApiConstants
 import com.example.findfilms.databinding.FragmentDetailsBinding
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
+import com.example.findfilms.domain.Interactor
 import com.example.findfilms.view.notification.NotificationHelper
 import com.example.findfilms.viewmodel.DetailsFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
+    @Inject
+    lateinit var interactor: Interactor
+
+    init {
+        App.instance.dagger.inject(this)
+    }
+
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var film: Film
     private val viewModel by lazy {
@@ -67,11 +77,13 @@ class DetailsFragment : Fragment() {
             if (!film.isInFavorites) {
                 binding.detailsInWish.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
+                interactor.addFavoriteFilm(film)
                 Snackbar.make(binding.root, R.string.film_add_to_favorite, Snackbar.LENGTH_SHORT)
                     .show()
             } else {
                 binding.detailsInWish.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
+                interactor.deleteFavoriteFilm(film)
                 Snackbar.make(binding.root,
                     R.string.film_remove_from_favorite,
                     Snackbar.LENGTH_SHORT).show()

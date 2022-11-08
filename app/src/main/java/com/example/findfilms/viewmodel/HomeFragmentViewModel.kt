@@ -4,7 +4,7 @@ package com.example.findfilms.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.findfilms.App
 import com.example.findfilms.R
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.domain.Interactor
 import com.example.findfilms.utils.SingleLiveEvent
 import io.reactivex.rxjava3.core.Observable

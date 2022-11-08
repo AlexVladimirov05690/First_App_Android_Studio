@@ -12,7 +12,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.findfilms.R
 import com.example.findfilms.com.example.findfilms.data.ApiConstants
-import com.example.findfilms.data.entity.Film
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.view.MainActivity
 
 object NotificationHelper {

@@ -34,7 +34,7 @@ object DeclinationOfTimeValues {
     }
 
     private fun hoursInString(number: Long): String {
-        return if (number in 11..19) "дней"
+        return if (number in 11..19) "часов"
         else {
             val lastNumberChar = number.toString().toCharArray().last()
             when (lastNumberChar.digitToInt()) {
