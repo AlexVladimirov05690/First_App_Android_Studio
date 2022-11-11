@@ -70,8 +70,8 @@ class DetailsFragment : Fragment() {
 
     private fun initButtons() {
         binding.watchLater.setOnClickListener {
+            NotificationHelper.notificationSet(requireContext(), film)
             Snackbar.make(binding.root, R.string.watch_later_menu, Snackbar.LENGTH_SHORT).show()
-            NotificationHelper.createNotification(requireContext(), film)
         }
         binding.detailsInWish.setOnClickListener {
             if (!film.isInFavorites) {
