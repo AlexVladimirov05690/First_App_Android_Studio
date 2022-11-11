@@ -35,6 +35,31 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    flavorDimensions "version"
+    productFlavors {
+        free {
+            dimension "version"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+        }
+        premium {
+            dimension "version"
+            applicationIdSuffix ".premium"
+            versionNameSuffix "-premium"
+        }
+    }
+    sourceSets {
+        free {
+            java {
+                srcDirs 'src\\free\\java'
+            }
+        }
+        premium {
+            java {
+                srcDirs 'src\\premium\\java'
+            }
+        }
+    }
 
 }
 
@@ -73,9 +98,9 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.43.1'
     kapt 'com.google.dagger:dagger-compiler:2.43.1'
     //Room
-    def room_version = "2.3.0-beta02"
+    def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-rxjava3:2.3.0-beta02"
+    implementation "androidx.room:room-rxjava3:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'

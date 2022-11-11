@@ -32,9 +32,5 @@ class HomeFragmentViewModel : ViewModel() {
         networkError.postValue(R.string.network_error)
     }
 
-    interface ApiCallback {
-        fun onSuccess()
-        fun onFailure()
-    }
 }
 

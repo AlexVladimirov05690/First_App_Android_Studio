@@ -5,15 +5,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.databinding.FragmentFavoritesBinding
 import com.example.findfilms.utils.AnimationHelper
+import com.example.findfilms.view.MainActivity
+import com.example.findfilms.view.rv_adapetrs.FilmListRecyclerAdapter
+import com.example.findfilms.view.rv_adapetrs.TopSpacingItemDecoration
+import com.example.findfilms.viewmodel.FavoritesFragmentViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
+    private lateinit var filmsFavoritesAdapter: FilmListRecyclerAdapter
+    private var filmDataBase = listOf<Film>()
+        set(value) {
+            if (field == value) return
+            field = value
+            filmsFavoritesAdapter.addItems(field)
+        }
+
+    private val viewModel by lazy {
+        ViewModelProvider.NewInstanceFactory().create(FavoritesFragmentViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
@@ -23,9 +43,31 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         AnimationHelper.performFragmentCircularRevealAnimation(
             binding.root,
-            requireActivity(),
-            2
+            requireActivity(), 2
         )
+        initAdapter()
+        viewModel.filmsListData
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{ list ->
+                filmsFavoritesAdapter.addItems(list)
+                filmDataBase = list
+            }
+    }
 
+    private fun initAdapter() {
+        binding.favoritesRecycler.apply {
+            filmsFavoritesAdapter =
+                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
+                    override fun click(film: Film) {
+                        (requireActivity() as MainActivity).launchDetailsFragment(film)
+                    }
+                })
+            adapter = filmsFavoritesAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
+
+        }
     }
 }

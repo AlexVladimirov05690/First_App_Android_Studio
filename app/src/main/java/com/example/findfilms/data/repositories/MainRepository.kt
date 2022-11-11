@@ -1,4 +1,4 @@
-package com.example.findfilms.data
+package com.example.findfilms.data.repositories
 
 import com.example.findfilms.data.Entity.Film
 import com.example.findfilms.data.dao.FilmDao
@@ -13,10 +13,7 @@ class MainRepository(private val filmDao: FilmDao) {
             filmDao.insertAll(films)
         }
     }
-    fun getAllFromDb(): Observable<List<Film>> = filmDao.getCachedFilms()
 
-    fun clearAllFromDb(films: List<Film>) {
-        filmDao.clearCachedFilms(films)
-    }
+    fun getAllFromDb(): Observable<List<Film>> = filmDao.getCachedFilms()
 
 }

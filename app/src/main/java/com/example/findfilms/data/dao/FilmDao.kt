@@ -15,4 +15,5 @@ interface FilmDao {
 
     @Delete
     fun clearCachedFilms(list: List<Film>)
+
 }

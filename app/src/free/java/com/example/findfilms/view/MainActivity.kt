@@ -4,23 +4,34 @@ import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.findfilms.*
 import com.example.findfilms.databinding.ActivityMainBinding
 import com.example.findfilms.data.Entity.Film
-import com.example.findfilms.utils.receivers.PowerCheckerBroadcast
+import com.example.findfilms.domain.Interactor
+import com.example.findfilms.utils.PowerChecker
 import com.example.findfilms.view.fragments.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var interactor: Interactor
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var receiver: BroadcastReceiver
+
+    init {
+        App.instance.dagger.inject(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        receiver = PowerCheckerBroadcast()
+        receiver = PowerChecker()
         val filters = IntentFilter().apply {
             addAction(Intent.ACTION_POWER_CONNECTED)
             addAction(Intent.ACTION_BATTERY_LOW)
@@ -32,12 +43,16 @@ class MainActivity : AppCompatActivity() {
             .add(binding.fragmentPlace.id, HomeFragment())
             .addToBackStack(null)
             .commit()
+
     }
 
     override fun onNewIntent(intent: Intent?) {
-        if (intent?.extras?.get("film") is Film) {
-            launchDetailsFragment(intent.extras?.get("film") as Film)
-        } else super.onNewIntent(intent)
+        super.onNewIntent(intent)
+        if (intent != null) {
+            if (intent.extras?.get("film") is Film) {
+                launchDetailsFragment(intent.extras?.get("film") as Film)
+            }
+        }
     }
 
 
@@ -81,8 +96,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.fav -> {
                     val tag = "favorites"
-                    val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment ?: FavoritesFragment(), tag)
+                    if (interactor.checkPromoPeriod()) {
+                        val fragment = checkFragmentExistence(tag)
+                        changeFragment(fragment ?: FavoritesFragment(), tag)
+                    } else {
+                        Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
                 R.id.watch_later_menu -> {
@@ -93,8 +112,13 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.selections -> {
                     val tag = "selections"
-                    val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment ?: SelectionsFragment(), tag)
+                    if (interactor.checkPromoPeriod()) {
+                        val fragment = checkFragmentExistence(tag)
+                        changeFragment(fragment ?: SelectionsFragment(), tag)
+                    } else {
+                        Toast.makeText(this, "Заплати, потом увидишь XD", Toast.LENGTH_SHORT).show()
+                    }
+
                     true
                 }
                 else -> false
